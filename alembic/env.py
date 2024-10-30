@@ -1,6 +1,6 @@
 from logging.config import fileConfig
 
-
+from src.blog.models import *
 from src.database import Base
 from src.auth.models import *
 from config import *

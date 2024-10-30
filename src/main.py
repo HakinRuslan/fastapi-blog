@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-
+from src.blog.router import router as blog_router
 from src.auth.auth import fastapi_users, auth_backend
 from src.auth.schemas import *
 
@@ -23,6 +23,8 @@ app.add_middleware(
     allow_methods=["GET", "POST", "OPTIONS", "DELETE", "PATCH", "PUT"],
     allow_headers=["Content-Type", "Set-Cookie", "Access-Control-Allow-Headers", "Access-Control-Allow-Origin", "Authorization"],
 )
+
+app.include_router(blog_router)
 
 app.include_router(
     fastapi_users.get_auth_router(auth_backend),
