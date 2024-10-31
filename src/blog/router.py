@@ -4,9 +4,11 @@ import json
 from sqlalchemy import select, insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.blog.schemas import *
-from src.blog.models import *
-from src.database import get_async_session
+from blog.schemas import *
+from blog.models import *
+from database import get_async_session
+
+test = "s"
 
 def serialize_row(row):
     return {column.name: getattr(row, column.name) for column in row.__table__.columns}
@@ -34,5 +36,3 @@ async def get_blogs(session: AsyncSession = Depends(get_async_session)):
         readblog = BlogSchemaRead(**blog)
         blogs.append(readblog)
     return {"status": 200, "data": blogs, "detail": 'Записи с таблицы'}
-
- 

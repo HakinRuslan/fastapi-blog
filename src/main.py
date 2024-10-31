@@ -3,9 +3,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-from src.blog.router import router as blog_router
-from src.auth.auth import fastapi_users, auth_backend
-from src.auth.schemas import *
+from blog.router import router as blog_router
+from auth.auth import fastapi_users, auth_backend
+from auth.schemas import *
 
 
 app = FastAPI()

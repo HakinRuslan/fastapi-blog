@@ -5,7 +5,7 @@ import datetime
 from fastapi_users.db import SQLAlchemyBaseUserTable
 from sqlalchemy.orm import Mapped, mapped_column
 
-from src.database import Base
+from database import Base
 
 class User(SQLAlchemyBaseUserTable[int], Base):
     __tablename__ = 'user'

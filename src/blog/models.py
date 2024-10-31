@@ -1,8 +1,8 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 
-from src.database import Base
-from src.auth.models import User
+from database import Base
+from auth.models import User
 
 class Blog(Base):
     __tablename__ = "blog"
