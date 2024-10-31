@@ -1,8 +1,8 @@
 from logging.config import fileConfig
 
-from src.blog.models import *
-from src.database import Base
-from src.auth.models import *
+from blog.models import *
+from database import Base
+from auth.models import *
 from config import *
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
