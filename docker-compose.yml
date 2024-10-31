@@ -7,6 +7,7 @@ services:
       password: example
       host: ruslan
       port: 5432 
+      database: blog
     #image: example/database
     build:
       context: .
