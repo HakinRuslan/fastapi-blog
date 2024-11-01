@@ -8,11 +8,6 @@ from blog.schemas import *
 from blog.models import *
 from database import get_async_session
 
-test = "s"
-
-def serialize_row(row):
-    return {column.name: getattr(row, column.name) for column in row.__table__.columns}
-
 router = APIRouter(tags=["blogs"], prefix="/blog")
 
 @router.post("/add_blog")
@@ -35,4 +30,16 @@ async def get_blogs(session: AsyncSession = Depends(get_async_session)):
         print(blog)
         readblog = BlogSchemaRead(**blog)
         blogs.append(readblog)
+    return {"status": 200, "data": blogs, "detail": 'Записи с таблицы'}
+
+    
+@router.post("/get_blog/{id}")
+async def get_blog(session: AsyncSession = Depends(get_async_session), id):
+    item = int(id)
+    query = select(Blog).where(Blog.c.id == id)
+    result = await session.execute(query)
+    items = result.mappings().all()
+    blog = items['Blog'].__dict__
+    readblog = BlogSchemaRead(**blog)
+    blogs.append(readblog)
     return {"status": 200, "data": blogs, "detail": 'Записи с таблицы'}

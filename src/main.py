@@ -14,6 +14,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 origins = [
     "http://127.0.0.1:8000",
+    "http://http://nifi.geekslore.ru:8000"
 ]
 
 app.add_middleware(
