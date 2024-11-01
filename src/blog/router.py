@@ -33,8 +33,8 @@ async def get_blogs(session: AsyncSession = Depends(get_async_session)):
     return {"status": 200, "data": blogs, "detail": 'Записи с таблицы'}
 
     
-@router.post("/get_blog/{id}")
-async def get_blog(session: AsyncSession = Depends(get_async_session), id):
+@router.get("/get_blog/{id}")
+async def get_blog(id, session: AsyncSession = Depends(get_async_session)):
     item = int(id)
     query = select(Blog).where(Blog.c.id == id)
     result = await session.execute(query)
