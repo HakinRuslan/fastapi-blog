@@ -16,7 +16,7 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
     verification_token_secret = SECRET
 
     async def on_after_register(self, user: User, request: Optional[Request] = None):
-        print(f"{user.username} {user.id} has registered.")
+        print(f"{user.firstname} {user.lastname} {user.id} has registered.")
     async def create(
         self,
         user_create: schemas.UC,
