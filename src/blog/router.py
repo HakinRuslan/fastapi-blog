@@ -39,10 +39,8 @@ async def get_blog(id, session: AsyncSession = Depends(get_async_session)):
     query = select(Blog).where(Blog.id == item)
     result = await session.execute(query)
     items = result.mappings().all()
-    print(items)
     blogs = list()
-    print(items[0])
-    blog = items[0].__dict__
+    blog = items[0]["Blog"].__dict__
     readblog = BlogSchemaRead(**blog)
     blogs.append(readblog)
     return {"status": 200, "data": blogs, "detail": 'Записи с таблицы'}
