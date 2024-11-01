@@ -26,7 +26,7 @@ async def get_blogs(session: AsyncSession = Depends(get_async_session)):
     items = result.mappings().all()
     blogs = list()
     for i in items:
-        blog = i['Blog'].__dict__
+        blog = i[0].__dict__
         print(blog)
         readblog = BlogSchemaRead(**blog)
         blogs.append(readblog)
