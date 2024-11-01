@@ -36,7 +36,7 @@ async def get_blogs(session: AsyncSession = Depends(get_async_session)):
 @router.get("/get_blog/{id}")
 async def get_blog(id, session: AsyncSession = Depends(get_async_session)):
     item = int(id)
-    query = select(Blog).where(Blog.id == id)
+    query = select(Blog).where(Blog.id == item)
     result = await session.execute(query)
     items = result.mappings().all()
     blog = items['Blog'].__dict__
