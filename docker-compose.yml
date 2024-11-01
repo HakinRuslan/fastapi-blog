@@ -2,10 +2,11 @@ version: '3.9'
 
 services:
   backend-fastapi:
+    container_name: back
     environment: 
       user: postgres
       password: example
-      host: ruslan
+      host: pgsql
       port: 5432 
       database: blog
     #image: example/database
@@ -16,7 +17,9 @@ services:
         - '8000:8000'
 
   db-for-blogapp:
+    container_name: pgsql
     image: postgres:16
+    hostname: pgsql
     restart: always
     # set shared memory limit when using docker-compose
     shm_size: 128mb

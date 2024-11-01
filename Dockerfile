@@ -5,9 +5,10 @@ WORKDIR /opt/app
 
 COPY src/requirements.txt /tmp/requirements.txt
 COPY src .
-COPY config.py .
 COPY alembic ./alembic
 COPY alembic.ini .
+COPY config.py ./alembic
+COPY config.py .
 
 RUN pip install virtualenv  &&\
     python -m virtualenv /opt/venv &&\
